@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
+import CountdownTimerRenderProps from './components/CountdownTimer/RenderProps';
+import CountdownTimerReactHook from './components/CountdownTimer/CountdownTimerReactHook.1';
 import './App.css';
 
 class App extends Component {
@@ -7,18 +9,18 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          <CountdownTimerRenderProps
+            initialSeconds={10}
+            onTimerFinish={() => alert('The timer has finished!')}
+            render={({ seconds }) => {
+              if (seconds === 0) {
+                return <p>Done!</p>;
+              }
+
+              return <p>Counting down... {seconds}</p>;
+            }}
+          />
+          <CountdownTimerReactHook />
         </header>
       </div>
     );
